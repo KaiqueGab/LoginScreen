@@ -30,7 +30,7 @@ function Home() {
     await api.delete(`/usuarios/${id}`)
 
     getUsers()
-
+    window.location.reload()
   }
 
   useEffect(() => {
