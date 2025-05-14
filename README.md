@@ -1,4 +1,5 @@
 <h2>What do in this Project</h2>
+<p>Using React, NodeJs, MongoDB, Vite, Prisma and Express</p>
 <p>This project created a user registration platform, allowing users to create, edit, delete and list users already added to the database.</p>
 
 <br>
