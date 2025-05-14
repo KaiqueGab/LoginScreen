@@ -11,13 +11,12 @@ app.use(cors())
 const users = []
 
 app.post('/usuarios', async (req, res) => {
-
     await prisma.user.create({
         data: {
             email: req.body.email,
             name: req.body.name,
-            age: req.body.age
-        }
+            age: req.body.age,
+        },
     })
 
     res.status(201).json(req.body)

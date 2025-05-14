@@ -17,7 +17,19 @@ function Home() {
   }
 
   async function createUsers() {
-    await api.post('/usuarios');
+    await api.post('/usuarios', {
+      name: inputName.current.value,
+      age: inputAge.current.value,
+      email: inputEmail.current.value
+    })
+
+    getUsers()
+  }
+
+  async function deleteUsers(id) {
+    await api.delete(`/usuarios/${id}`)
+
+    getUsers()
 
   }
 
@@ -25,14 +37,14 @@ function Home() {
     getUsers()
   }, [])
 
-  return (
+  return ( //code html below
 
     <div className='container'>
       <form>
         <h1>Cadastro de Usuários</h1>
-        <input placeholder="Nome" name="nome" type="text" />
-        <input placeholder="Idade" age="idade" type="number" />
-        <input placeholder="E-mail" email="E-mail" type="email" />
+        <input placeholder="Nome" name="nome" type="text" ref={inputName} />
+        <input placeholder="Idade" age="idade" type="number" ref={inputAge} />
+        <input placeholder="E-mail" email="E-mail" type="email" ref={inputEmail} />
         <button type='button' onClick={createUsers}>Cadastrar</button>
       </form>
 
@@ -43,7 +55,7 @@ function Home() {
             <p>Idade: <span>{user.age}</span></p>
             <p>E-mail: <span>{user.email}</span></p>
           </div>
-          <button>
+          <button onClick={() => deleteUsers(user.id)} >
             <img src={Trash} />
           </button>
         </div>
